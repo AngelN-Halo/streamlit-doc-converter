@@ -1,0 +1,11 @@
+🚀 Quickstart (Docker Compose)
+1. Clone the repo
+git clone https://github.com/AngelN-Halo/streamlit-doc-converter.git
+cd streamlit-doc-converter
+2. Build & run
+docker compose build --no-cache
+docker compose up
+3. Access in browser
+Open:
+http://localhost:5055
+You should see the Document Converter UI.

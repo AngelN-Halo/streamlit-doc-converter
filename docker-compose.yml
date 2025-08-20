@@ -1,0 +1,11 @@
+services:
+  streamlit-converter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: streamlit-converter
+    ports:
+      - "5055:5055"
+    volumes:
+      - ./shared:/app/shared  # Optional: mount for testing uploads
+    restart: unless-stopped

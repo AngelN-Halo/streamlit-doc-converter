@@ -1,0 +1,4 @@
+Build the image:
+docker build -t streamlit-converter .
+Run the container:
+docker run -it --rm -p 5055:5055 streamlit-converter

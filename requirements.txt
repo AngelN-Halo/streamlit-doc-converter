@@ -1,0 +1,9 @@
+streamlit
+pdfplumber
+pandas
+python-docx
+pytesseract
+pypandoc
+openpyxl
+tabulate
+# pillow is excluded from the list to control how it’s built in Docker

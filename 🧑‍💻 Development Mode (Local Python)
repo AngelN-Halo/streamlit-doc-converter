@@ -1,0 +1,41 @@
+🧑‍💻 Development Mode (Local Python)
+You must have Python 3.10+ and Tesseract OCR installed on your system. 
+brew install tesseract pandoc poppler
+Debian/Ubuntu:
+sudo apt-get install tesseract-ocr tesseract-ocr-eng pandoc poppler-utils libjpeg-dev zlib1g-dev
+Then:
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run streamlit_app.py
+
+⚙️ Project Structure
+.
+├── streamlit_app.py       # Main app code
+├── requirements.txt       # Python dependencies (Pillow excluded - built in Docker)
+├── Dockerfile             # Container build instructions
+├── docker-compose.yml     # Service definition
+└── shared/                # Optional: volume for uploaded files
+
+🛠 Troubleshooting
+JPEG fails to load
+Check container logs right after start — you should see:
+=== Pillow Debug Info ===
+Pillow version: X.X.X
+JPEG support: True
+...
+If JPEG support: False, ensure libjpeg-dev and zlib1g-dev are installed before Pillow is built.
+Label warnings in Streamlit
+Fixed: All widgets now have explicit labels.
+HEIC/WebP files renamed to .jpg
+These are not actually JPEGs; convert them to JPEG before uploading.
+
+flowchart TD
+    A[Web Browser Upload] --> B[Streamlit App in Docker]
+    B --> C[Image Handler: Pillow + Tesseract OCR]
+    B --> D[PDF Handler: pdfplumber]
+    B --> E[Doc/Spreadsheet: python-docx, pandas]
+    C --> F[Extracted Text]
+    D --> F
+    E --> F
+    F --> G[Markdown Preview + Download]
