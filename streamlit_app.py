@@ -15,7 +15,6 @@ st.title("📄 Upload and Convert Files")
 st.markdown("""
 ### Why Choose MD?
 - **Markdown (MD)**: Preferred for human-readable documents with lightweight formatting. Use this if your content will be published or shared as plain text with headings, lists, etc.
-- **JSON**: COMING SOON! Ideal for structured data storage, machine processing, and integration with databases or APIs. Choose this if your content is part of a pipeline for embeddings, analytics, or further programmatic handling.
 """)
 
 uploaded_file = st.file_uploader(
