@@ -1,9 +1,9 @@
-streamlit
-pdfplumber
-pandas
-python-docx
-pytesseract
-pypandoc
-openpyxl
-tabulate
-# pillow is excluded from the list to control how it’s built in Docker
+streamlit==1.67.0
+pdfplumber==0.11.11
+pandas==3.1.1
+python-docx==1.2.0
+pytesseract==0.3.13
+pypandoc==1.17
+openpyxl==3.1.5
+tabulate==0.10.0
+pillow==13.0.0

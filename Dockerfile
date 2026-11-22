@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.13-slim
 
 WORKDIR /app
 
@@ -21,13 +21,9 @@ RUN apt-get update && apt-get install -y \
 # Copy requirements and install Python dependencies
 COPY requirements.txt ./
 
-# Install Pillow first, rebuilt from source so it picks up libjpeg support
+# Build the pinned Pillow version from source so it picks up libjpeg support.
 RUN pip install --no-cache-dir --upgrade pip
-RUN pip install --no-cache-dir --force-reinstall --no-binary :all: pillow
-
-# Install the rest of the packages except Pillow (we already installed it)
-RUN grep -v pillow requirements.txt > requirements_no_pillow.txt && \
-    pip install --no-cache-dir -r requirements_no_pillow.txt
+RUN pip install --no-cache-dir --no-binary pillow -r requirements.txt
 
 # Copy the app
 COPY . .
